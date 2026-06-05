@@ -130,12 +130,13 @@ def Result1 () :
 
         p = Generate_pass (int(Len_Pass))
 
-        if len (Len_Pass)< 8 :
+        if int (Len_Pass)< 8 :
             R.config (text = p ) 
 
         else :
             R.config (text = "Password : "+ p ) 
-
+            E2.delete(0, T.END)
+            E2.insert(0, p)
 
 
 
@@ -180,10 +181,11 @@ def result2 ():
 
 root = T.Tk()
 
+root.configure(bg="#f0f0f0")
 root.title ("Password Generator")
 root.geometry ("600x600")
 
-label = T.Label (root , text="Enter Password Length  : " )
+label = T.Label (root , text="Enter Password Length  : ",font=("Arial", 12, "bold") )
 label.pack ()
 
 E = T.Entry (root )
@@ -191,32 +193,35 @@ E.pack ()
 
 
 R = T.Label (root , text= " ",
-             font= ("Arial",14),
-             wraplength=500
+             
+             wraplength=500,
+             font=("Arial", 12, "bold")
              )
 R.pack ()
 
 B1 = T.Button (root ,
               text = "Submit" ,
-              command = Result1
+              command = Result1,
+              width=20
               )
 B1.pack()
 
 
 
-L2 = T.Label (root , text = "Enter Password : ")
+L2 = T.Label (root , text = "Enter Password : ",font=("Arial", 12, "bold"))
 L2.pack ()
 
 E2 = T.Entry (root)
 E2.pack()
 
-R2 = T.Label (root , text = "")
+R2 = T.Label (root , text = "" ,font=("Arial", 12, "bold"))
 R2.pack ()
 
 
 B2 = T.Button (root,
               text = "Check Strength  ",
                command = result2 
+               ,width=20
                )
 B2.pack ()
 

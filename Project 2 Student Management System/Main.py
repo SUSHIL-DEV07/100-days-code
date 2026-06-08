@@ -2,116 +2,186 @@ Students =  []
 
 
 
-choice = int (input ("Total Student : "))
 
-for i in range (choice):
+
+def add_student ():
+
     student = {}
 
-    student ["rollno"] = int (input ("Enter Roll no : "))
+     
+    while True:
+
+        rollno = int (input ("Enter Roll no : "))
+
+        if rollno <= 0 :
+            print ("Rollno Must be Positive ") 
+            continue   
+
+        if  any(i["rollno"] == rollno for i in Students) :
+            print ("this roll no Already exist")
+                
+        else :
+            student["rollno"] = rollno
+            break    
+
     student ["name"]  = input ("Enter Name : ")
     student ["age"] = int (input ("Enter Age : "))
     student ["cource"] = input ("Enter Cource : ")
 
     Students.append (student)
+    print ("Student Added Successfully ")
+    
+    
+
+
+def view_student() :
+
+    if len (Students) == 0 : 
+        print ("No Student Record Present ..")
+
+    else :
+    
+        for i in range (len (Students)) :
+
+    
+            print ("Student " , (i + 1))
+            print ("Rollno : " , Students [i]["rollno"])
+            print ("Name : " , Students [i]["name"])
+            print ("Age : " , Students [i]["age"])
+            print ("Cource : " , Students [i]["cource"])
+            print ()
+
+
+
+
+
+
+
+
+def search_student () :
+    print ()
+    print ("Search Student")
+    Search = int (input ("Enter a roll no : "))
+
+
+
+
+    for i in Students :
+
+        if (i["rollno"] == Search ):
+
+            print ()
+            print ("Student Found ") 
+            print ()
+            print ("Name : " , i["name"] )
+            print ("Age : " , i["age"] )
+            print ("Cource : " , i["cource"] )
+
+            break 
+
+    else : 
+        print ("Student Not Found . ")
+    
+    
+
+
+def delete_student () :
+
+    print ()
+    print ("Deleted Student")
+    Search = int (input ("Enter a roll no : "))
+
+
+
+
+    for i in Students :
+
+        if (i["rollno"] == Search ):
+
+            Students.remove (i)
+            print ("Student Record Delete Successfully ")
+
+            break 
+
+    else : 
+        print ("Student Not Found. ")
     
     
 
 
 
-for i in range (len (Students)) :
 
+
+
+def update_student ():
+
+    print ()
+    print ("Updated Student")
+    Search = int (input ("Enter a roll no : "))
+
+
+
+
+    for i in Students :
+
+        if (i["rollno"] == Search ):
+
+            i ["name"] = (input ("Enter User Updated name : "))
+            i ["age"] = int (input ("Enter User Updated Age : "))
+            i ["cource"] = input ("Enter User Updated couece : ")
+
+            print ()
+            print("Student Record Updated Successfully")
+
+
+            break 
+
+    else : 
+        print ("Student Not Found. ")
     
-    print ("Student " , (i + 1))
-    print ("Rollno : " , Students [i]["rollno"])
-    print ("Name : " , Students [i]["name"])
-    print ("Age : " , Students [i]["age"])
-    print ("Cource : " , Students [i]["cource"])
+    
+    
+
+
+
+
+
+
+while (True) :
+    print ("============STUDENT MANAGEMENT SYSTEM=============")
+    print ()
+    print ("1 Add Student")
+    print ("2 View Student Information")
+    print ("3 Search Student")
+    print ("4 Delete Student ")
+    print ("5 Update Student ")
+    print ("6 Exit")
     print ()
 
-print ()
-print ("Search Student")
-Search = int (input ("Enter a roll no : "))
+    choice = int (input ("Enter Choice : " ))
+    print ()
 
+    if choice == 1 :
+        add_student ()
 
+    elif choice == 2 :
+        view_student ()
 
+    elif choice == 3 :
+        search_student ()
 
-for i in Students :
+    elif choice == 4 : 
+        delete_student ()
 
-    if (i["rollno"] == Search ):
+    elif choice == 5 :
+        update_student () 
 
+    elif choice == 6 : 
+        break
+
+    else : 
+        print ("Invalid Input ..")
         print ()
-        print ("Student Found ") 
-        print ("Name : " , i["name"] )
-        print ("Age : " , i["age"] )
-        print ("Cource : " , i["cource"] )
-
-        break 
-
-else : 
-    print ("Student Not Found . ")
-    
-    
-
-
-
-
-print ()
-print ("Deleted Student")
-Search = int (input ("Enter a roll no : "))
-
-
-
-
-for i in Students :
-
-    if (i["rollno"] == Search ):
-
-        Students.remove (i)
-        print ("Student Record Delete Successfully ")
-
-        break 
-
-else : 
-    print ("Student Not Found. ")
-    
-    
-
-
-
-
-
-
-
-
-print ()
-print ("Updated Student")
-Search = int (input ("Enter a roll no : "))
-
-
-
-
-for i in Students :
-
-    if (i["rollno"] == Search ):
-
-        i ["name"] = (input ("Enter User Updated name : "))
-        i ["age"] = int (input ("Enter User Updated Age : "))
-        i ["cource"] = input ("Enter User Updated couece : ")
-
-        print ()
-        print("Student Record Updated Successfully")
-
-
-        break 
-
-else : 
-    print ("Student Not Found. ")
-    
-    
-print(Students)
-
-
-
 
 
 

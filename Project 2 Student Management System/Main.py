@@ -1,14 +1,16 @@
-Students =  []
-
-
+import json
 
 
 
 def add_student ():
 
+    with open ("Students.json" , "r") as F :
+        Students = json.load (F)
+        
+
     student = {}
 
-     
+
     while True:
 
         rollno = int (input ("Enter Roll no : "))
@@ -19,7 +21,7 @@ def add_student ():
 
         if  any(i["rollno"] == rollno for i in Students) :
             print ("this roll no Already exist")
-                
+
         else :
             student["rollno"] = rollno
             break    
@@ -30,20 +32,40 @@ def add_student ():
 
     Students.append (student)
     print ("Student Added Successfully ")
-    
-    
+
+    with open ("Students.json" , "w") as F : 
+        json.dump(Students , F)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def view_student() :
+
+    with open ("Students.json","r") as F :
+        Students = json.load (F)
 
     if len (Students) == 0 : 
         print ("No Student Record Present ..")
 
     else :
-    
+
         for i in range (len (Students)) :
 
-    
+
             print ("Student " , (i + 1))
             print ("Rollno : " , Students [i]["rollno"])
             print ("Name : " , Students [i]["name"])
@@ -58,7 +80,14 @@ def view_student() :
 
 
 
+
+
 def search_student () :
+
+
+    with open ("Students.json" ,"r") as F :
+        Students = json.load (F)
+        
     print ()
     print ("Search Student")
     Search = int (input ("Enter a roll no : "))
@@ -77,15 +106,26 @@ def search_student () :
             print ("Age : " , i["age"] )
             print ("Cource : " , i["cource"] )
 
+            with open ("Students.json" , "w") as F :
+                json.dump (Students , F)
+
             break 
 
     else : 
         print ("Student Not Found . ")
-    
-    
+
+
+
+
+
+
+
 
 
 def delete_student () :
+
+    with open ("Students.json","r") as F :
+        Students = json.load (F)
 
     print ()
     print ("Deleted Student")
@@ -101,12 +141,21 @@ def delete_student () :
             Students.remove (i)
             print ("Student Record Delete Successfully ")
 
+            with open ("Students.json" , "w") as F :
+                json.dump (Students , F)
             break 
 
     else : 
         print ("Student Not Found. ")
-    
-    
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,6 +163,9 @@ def delete_student () :
 
 
 def update_student ():
+
+    with open ("Students.json" ,"r") as F : 
+        Students = json.load (F)
 
     print ()
     print ("Updated Student")
@@ -133,14 +185,15 @@ def update_student ():
             print ()
             print("Student Record Updated Successfully")
 
-
+            with open ("Students.json" , "w") as F :
+                json.dump (Students , F)
             break 
 
     else : 
         print ("Student Not Found. ")
     
-    
-    
+
+
 
 
 
@@ -183,20 +236,6 @@ while (True) :
         print ("Invalid Input ..")
         print ()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print ("Thank You For Using Our System ")
 
 
